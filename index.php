@@ -40,13 +40,13 @@
         <label for="vlees">vlees</label><br><br>
 
         <p>Kruiden</p>
-        <input type="checkbox" id="kruiden1" name="kruiden" value="peterselie">
+        <input type="checkbox" id="peterselie" name="kruiden1" value="peterselie">
         <label for="kruiden1"> Peterselie</label><br>
-        <input type="checkbox" id="kruiden2" name="kruiden" value="oregano">
+        <input type="checkbox" id="oregano" name="kruiden2" value="oregano">
         <label for="kruiden2"> Oregano</label><br>
-        <input type="checkbox" id="kruiden3" name="kruiden" value="chiliflakes">
+        <input type="checkbox" id="chiliflakes" name="kruiden3" value="chiliflakes">
         <label for="kruiden3"> Chili flakes</label><br>
-        <input type="checkbox" id="kruiden4" name="kruiden" value="zwartepeper">
+        <input type="checkbox" id="zwartepeper" name="kruiden4" value="zwartepeper">
         <label for="kruiden4"> Zwarte peper</label><br><br>
 
         <input type="submit" value="Bestel">

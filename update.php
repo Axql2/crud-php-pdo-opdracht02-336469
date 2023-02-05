@@ -39,10 +39,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $statement->bindValue(':Bodemformaat', $_POST['bodem'], PDO::PARAM_STR);
         $statement->bindValue(':Saus', $_POST['saus'], PDO::PARAM_STR);
         $statement->bindValue(':Pizzatoppings', $_POST['pizzatoppings'], PDO::PARAM_STR);
-        $statement->bindValue(':Peterselie', $_POST['peterselie'], PDO::PARAM_STR);
-        $statement->bindValue(':Oregano', $_POST['oregano'], PDO::PARAM_STR);
-        $statement->bindValue(':Chiliflakes', $_POST['chiliflakes'], PDO::PARAM_STR);
-        $statement->bindValue(':Zwartepeper', $_POST['zwartepeper'], PDO::PARAM_STR);
+        $statement->bindValue(':Peterselie', $_POST['kruiden1'], PDO::PARAM_STR);
+        $statement->bindValue(':Oregano', $_POST['kruiden2'], PDO::PARAM_STR);
+        $statement->bindValue(':Chiliflakes', $_POST['krudien3'], PDO::PARAM_STR);
+        $statement->bindValue(':Zwartepeper', $_POST['kruiden4'], PDO::PARAM_STR);
 
         // We gaan de query uitvoeren op de mysql-server
         $statement->execute();
@@ -52,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     } catch(PDOException $e) {
         echo "Het record is niet geupdate";
-        header("Refresh:3; read.php");
+        header("Refresh:10; read.php");
     }
     exit();
 }
@@ -87,31 +87,44 @@ $result = $statement->fetch(PDO::FETCH_OBJ);
     <h1>PDO CRUD</h1>
 
     <form action="update.php" method="post">
+        <label for="bodem">Bodemformaat</label> <br>
+        <select name="bodem" id="bodem"> 
+            <option value="">Maak je keuze</option>
+            <option value="20cm">20cm</option>
+            <option value="25cm">25cm</option>
+            <option value="30cm">30cm</option>
+            <option value="35cm">35cm</option>
+            <option value="40cm">40cm</option>
+        </select><br><br>
 
-        <label for="bodem">Bodemformaat:</label><br>
-        <input type="text" name="bodem" id="bodem" value="<?php echo $result->Bodemformaat; ?>"><br><br>
+        <label for="saus">Saus</label> <br>
+        <select name="saus" id="saus"> 
+            <option value="tomatensaus">Tomatensaus</option>
+            <option value="extratomatensaus">Extra Tomatensaus</option>
+            <option value="spicytomatensaus">Spicy tomatensaus</option>
+            <option value="bbq">BBQ saus</option>
+            <option value="fraische">Crème fraische</option>
+        </select><br><br>
 
-        <label for="saus">Saus:</label><br>
-        <input type="text" name="saus" id="saus" value="<?php echo $result->Saus; ?>"><br><br>
+        <p>Pizzatoppings</p>
+        <input type="radio" id="vegan" name="pizzatoppings" value="vegan">
+        <label for="vegan">vegan</label><br>
+        <input type="radio" id="vegetarisch" name="pizzatoppings" value="vegetarisch">
+        <label for="vegetarisch">vegetarisch</label><br>
+        <input type="radio" id="vlees" name="pizzatoppings" value="vlees">
+        <label for="vlees">vlees</label><br><br>
 
-        <label for="">Pizzatoppings:</label><br>
-        <input type="radio" name="pizzatoppings" id="" value="<?php echo $result->Pizzatoppings; ?>"><br><br>
+        <p>Kruiden</p>
+        <input type="checkbox" id="peterselie" name="kruiden1" value="peterselie">
+        <label for="kruiden1"> Peterselie</label><br>
+        <input type="checkbox" id="oregano" name="kruiden2" value="oregano">
+        <label for="kruiden2"> Oregano</label><br>
+        <input type="checkbox" id="chiliflakes" name="kruiden3" value="chiliflakes">
+        <label for="kruiden3"> Chili flakes</label><br>
+        <input type="checkbox" id="zwartepeper" name="kruiden4" value="zwartepeper">
+        <label for="kruiden4"> Zwarte peper</label><br><br>
 
-        <label for="peterselie">Peterselie:</label><br>
-        <input type="checkbox" name="peterselie" id="peterselie" value="<?php echo $result->Peterselie; ?>"><br><br>
-
-        <label for="oregano">Oregano:</label><br>
-        <input type="checkbox" name="oregano" id="oregano" value="<?php echo $result->Oregano; ?>"><br><br>
-
-        <label for="chilipeper">Chilipeper:</label><br>
-        <input type="checkbox" name="chilipeper" id="chilipeper" value="<?php echo $result->Chiliflakes; ?>"><br><br>
-        
-        <label for="zwartepeper">Zwartepeper:</label><br>
-        <input type="checkbox" name="zwartepeper" id="zwartepeper" value="<?php echo $result->Zwartepeper; ?>"><br><br>
-
-        <input type="hidden" name="Id" value="<?php echo $result->Id; ?>">
-
-        <input type="submit" value="Verstuur">
+        <input type="submit" value="Bestel">
     </form>
 </body>
 </html>
