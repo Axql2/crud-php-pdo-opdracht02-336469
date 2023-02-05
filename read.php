@@ -31,7 +31,7 @@ $sql = "SELECT Id
               ,Zwartepeper
         FROM Pizza";
 
-//Bereid de de query voor met de method prepare
+
 $statement = $pdo->prepare($sql);
 
 // Voer de query uit
